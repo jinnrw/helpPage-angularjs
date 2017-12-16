@@ -1,0 +1,36 @@
+<!DOCTYPE>
+<html>
+
+<head>
+  <link rel="stylesheet" type="" href="/style.css">
+  <script src="/node_modules/angular/angular.js"></script>
+  <script src="/node_modules/angular-route/angular-route.js"></script>
+  <script src="/script.js"></script>
+</head>
+
+<body ng-app="helpApp" id="help-app">
+  <div ng-controller="categoryLoaderCtrl" class="sidebar">
+    <a href="#!">Home</a>
+    <!-- Categoriy lists -->
+    <ul class="category-lists">
+      <!-- Single category Looper -->
+      <li ng-repeat="category in categories">
+        <h3 ng-click="setActiveCategory(category)" class="categoroy-title">{{ category.name }}</h5>
+        <!-- Links in Category -->
+        <ul ng-show="isActiveCategory(category)">
+          <!-- Link Looper -->
+          <li ng-repeat="link in category.links" ng-class="{active: isActiveLink(link)}">
+            <a href="" ng-click="activeLink(link.href)">{{ link.title }}</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div id="help-content">
+    <div ng-view>
+    </div>
+  </div>
+</body>
+
+</html>
